@@ -1,0 +1,6 @@
+{
+    "dataFile": "data.xlsx",
+    "dataSheet": "Sheet1",
+    "outputFile": "output.json",
+    "outputFileType": "php"
+}
