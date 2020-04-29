@@ -149,10 +149,10 @@ class ConvertToPhpArray(ConvertToSomething):
         """
         with open(self._output, mode='a') as f:
             f.write('[\n    ')
-            for key, value in data.items():
+            for index, (key, value) in enumerate(data.items()):
                 f.write(self.__add_quote(key)+' => ' +
                         self.__format_value(value))
-                if key != next(iter(reversed(data))):
+                if index != len(data)-1:
                     f.write(',')
             f.write('\n]')
 
