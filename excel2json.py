@@ -35,6 +35,7 @@ class ConvertToSomething():
         """
         ヘッダー出力処理
         """
+        # ファイルがあれば上書きにするため、modeはwとする
         with open(self._output, mode='w') as f:
             f.write("[")
 
@@ -106,6 +107,19 @@ class ConvertToSomething():
 
 
 class ConvertToJson(ConvertToSomething):
+    """
+    Excel形式をJsonへ変換するクラス
+
+    Attributes
+    ----------
+    _sheet : Objct
+        Excelのシート
+    _output : FileObjct
+        出力ファイル
+    _columns : List of str
+        カラム名のリスト
+    """
+
     def _write_data(self, data):
         """
         Json形式で出力する
@@ -116,6 +130,19 @@ class ConvertToJson(ConvertToSomething):
 
 
 class ConvertToPhpArray(ConvertToSomething):
+    """
+    Excel形式をPHPの連想配へ変換するクラス
+
+    Attributes
+    ----------
+    _sheet : Objct
+        Excelのシート
+    _output : FileObjct
+        出力ファイル
+    _columns : List of str
+        カラム名のリスト
+    """
+
     def _write_data(self, data):
         """
         PHPの連想配列として出力する
@@ -158,7 +185,6 @@ def main():
     メイン処理
     """
     # 設定ファイル読み込み
-
     with open('settings.json', 'r') as f:
         try:
             settings = json.load(f)
